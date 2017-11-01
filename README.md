@@ -1,50 +1,10 @@
 # iPASSIT
 ---
 ## Arcade Game
-===============================
+--- 
+
 Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
-Pass to the other side and get more score.
+
 
 ## Table of content
 ---
@@ -56,9 +16,14 @@ Pass to the other side and get more score.
 ## How_to_play
 
 Play with the arrow
->>> right
->>> left
->>> up
->>> down
+
+```
+>> right
+>> left
+>> up
+>> down
+```
 
 ## License
+
+MIT
