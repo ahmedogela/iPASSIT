@@ -49,7 +49,7 @@ Pass to the other side and get more score.
 ## Table of content
 ---
 
-* [How To Play](#how_to_play)
+* [How To Play](#how to play)
 * [License](#license)
 
 
