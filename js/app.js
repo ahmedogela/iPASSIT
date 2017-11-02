@@ -1,6 +1,7 @@
 'use strict'
 
-var score = $('#score');
+// access the dom using jquery
+var scoreSpan = $('#score');
 
 // Main Constructor/ Class for OOP
 var Unit = function(x, y, sprite) {
@@ -37,6 +38,7 @@ Enemy.prototype.update = function(dt) {
 // The player Constructor 
 var Player = function() {
     Unit.call(this, 200, 400, 'images/char-boy.png');
+    this.score = 0;
 };
 
 // Inherit form Unit Constructor
@@ -66,8 +68,8 @@ Player.prototype.handleInput = function(key) {
         this.update(0, 80);
     }
     if(this.y === 0) {
-        var scoreTotal = Number(score.text());
-        score.text(scoreTotal + 1);
+        this.score += 1;
+        scoreSpan.text(this.score);
         var self = this;
         setTimeout(function() {
             self.moveToStart();
@@ -97,7 +99,8 @@ Player.prototype.moveToStart = function() {
 // rest scores and move to start
 Player.prototype.reset = function() {
     this.moveToStart();
-    score.text('0');
+    this.score = 0;
+    scoreSpan.text(this.score);
 };
 
 // Place all enemy objects in an array called allEnemies
