@@ -1,3 +1,5 @@
+'use strict'
+
 var score = $('#score');
 
 // Main Constructor/ Class for OOP
@@ -7,12 +9,12 @@ var Unit = function(x, y, sprite) {
     this.y = y;
     // The image/sprite for our enemies or the player
     this.sprite = sprite;
-}
+};
 
 // To render the Image to the canvas
 Unit.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -32,11 +34,10 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + (this.speed * dt);
 };
 
-
 // The player Constructor 
 var Player = function() {
     Unit.call(this, 200, 400, 'images/char-boy.png');
-}
+};
 
 // Inherit form Unit Constructor
 Player.prototype = Object.create(Unit.prototype);
@@ -44,7 +45,7 @@ Player.prototype.constructor = Player;
 
 // Update the player position
 Player.prototype.update = function(x, y) {
-    if(x != undefined && y != undefined) {
+    if(x !== undefined && y !== undefined) {
         this.x += x;
         this.y += y;
     }
@@ -52,16 +53,16 @@ Player.prototype.update = function(x, y) {
 
 // handle the player position
 Player.prototype.handleInput = function(key) {
-    if (key === 'left' && this.x != 0) {
+    if (key === 'left' && this.x !== 0) {
         this.update(-100, 0);
     }
-    if (key === 'right' && this.x != 400) {
+    if (key === 'right' && this.x !== 400) {
         this.update(100, 0);
     }
-    if (key === 'up' && this.y != 0) {
+    if (key === 'up' && this.y !== 0) {
         this.update(0, -80);
     }
-    if (key === 'down' && this.y != 400) {
+    if (key === 'down' && this.y !== 400) {
         this.update(0, 80);
     }
     if(this.y === 0) {
@@ -77,20 +78,27 @@ Player.prototype.handleInput = function(key) {
 
 // check collision and call it inside engine update canvas
 Player.prototype.checkCollision = function(enemies) {
+    var self = this;
     enemies.forEach(function(enemy) {
-        var betweenx = player.x - enemy.x,
-        betweeny = player.y - enemy.y;
-        if ( betweeny == 0 && betweenx >= 0 && betweenx < 90) { 
-            reset();
+        var betweenx = self.x - enemy.x,
+        betweeny = self.y - enemy.y;
+        if ( betweeny === 0 && betweenx >= 0 && betweenx < 90) { 
+            self.reset();
         }
     });
-}
+};
 
 // Move to start
 Player.prototype.moveToStart = function() {
     this.x = 200;
     this.y = 400;
-}
+};
+
+// rest scores and move to start
+Player.prototype.reset = function() {
+    this.moveToStart();
+    score.text('0');
+};
 
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [new Enemy(80, 50), new Enemy(240, 100)];
@@ -104,7 +112,7 @@ var interval = setInterval(function() {
     var randomSpeed = randomInRange(50, 350);
     var randomPosition = positions[Math.floor(Math.random() * positions.length)];
     allEnemies.push(new Enemy(randomPosition, randomSpeed));
-}, 900)
+}, 900);
 
 // This listens for key presses and sends the keys to your
 document.addEventListener('keyup', function(e) {
@@ -121,10 +129,4 @@ document.addEventListener('keyup', function(e) {
 // get a random value between a given range
 function randomInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-// rest scores and move to start
-function reset() {
-    player.moveToStart();
-    score.text('0');
 }
